@@ -1,0 +1,1 @@
+r {>"../nested/d.dust"/} s {>"../nested/sub/c.dust" name="foo"/} t

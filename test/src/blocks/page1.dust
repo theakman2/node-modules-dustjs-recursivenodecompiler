@@ -1,0 +1,4 @@
+{>"tmpl.dust"/}
+
+{<foo}x{/foo}
+{<bar}y{/bar}
