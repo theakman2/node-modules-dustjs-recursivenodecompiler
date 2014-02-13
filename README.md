@@ -40,13 +40,13 @@ Using the compiled templates (e.g. in the browser):
 <script src="path/to/dust.js"></script>
 <script src="path/to/compiled.js"></script>
 <script>
-	dust.render("_AUTO_TEMPLATE_NAME%0",function(err,out){
-		
+	dust.render("_AUTO_TEMPLATE_NAME%0",{},function(err,out){
+		// `out` is '<p>My name is Bob Smith</p>'
 	});
 </script>
 ```
 
-This module overwrites the filepaths to the partials so the end-user doesn't see this. The entry template is always at `_AUTO_TEMPLATE_NAME%0`. 
+This module overwrites the filepaths to the partials so they're not present after compilation. The entry template is always at `_AUTO_TEMPLATE_NAME%0`. 
 
 You can disable the recursive compilation at any time by setting `dust.ENABLE_RECURSIVE_COMPILATION` to `false`.
 
