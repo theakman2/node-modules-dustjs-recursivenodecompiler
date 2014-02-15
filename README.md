@@ -1,6 +1,6 @@
-# node-modules-dustjs-recursivenodecompiler
+# dustjs-recursivenodecompiler
 
-A version of the [dustjs-linkedin module](https://github.com/linkedin/dustjs) that allows recursive compilation via NodeJS.
+Recursively compile [DustJS templates](https://github.com/linkedin/dustjs) via Node.
 
 ## Usage
 
@@ -40,15 +40,26 @@ Using the compiled templates (e.g. in the browser):
 <script src="path/to/dust.js"></script>
 <script src="path/to/compiled.js"></script>
 <script>
-	dust.render("_AUTO_TEMPLATE_NAME%0",{},function(err,out){
+	dust.render("tmpl1.dust",{},function(err,out){
 		// `out` is '<p>My name is Bob Smith</p>'
 	});
 </script>
 ```
 
-This module overwrites the filepaths to the partials so they're not present after compilation. The entry template is always at `_AUTO_TEMPLATE_NAME%0`. 
+By default, partials are registered relative to the directory of the entry template. This means the entry template is registered under its file name.
 
-You can disable the recursive compilation at any time by setting `dust.ENABLE_RECURSIVE_COMPILATION` to `false`.
+Other templates compiled as part of the recursive process may also be accessed relative to the entry template's directory:
+
+```javascript
+dust.render("../foo/tmpl2.dust",{},function(err,out){
+	// `out` is 'Bob Smith'
+});
+dust.render("tmpl3.dust",{},function(err,out){
+	// `out` is 'Smith'
+});
+```
+
+You can disable the recursive compilation at any time by calling `dust.setRecursiveCompilation(false)`. Enable it again by calling `dust.setRecursiveCompilation(true)`.
 
 ## Tests [![Build Status](https://travis-ci.org/theakman2/node-modules-dustjs-recursivenodecompiler.png?branch=master)](https://travis-ci.org/theakman2/node-modules-dustjs-recursivenodecompiler)
 
