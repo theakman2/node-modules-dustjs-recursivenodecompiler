@@ -1,6 +1,6 @@
 # dustjs-recursivenodecompiler
 
-Recursively compile [DustJS templates](https://github.com/linkedin/dustjs) via Node.
+Recursively compile [DustJS templates](https://github.com/linkedin/dustjs) with Node.
 
 ## Usage
 
@@ -31,6 +31,9 @@ var compiled = dust.compile(contents,"path/to/tmpl1.dust");
 
 // an array containing the compiled contents of tmpl1.dust, tmpl2.dust and tmpl3.dust as separate elements.
 var compiledArray = dust.compileArray(contents,"path/to/tmpl1.dust");
+
+// it's also possible to compile recursively with multiple entry templates:
+var compiled2 = dust.compile([entry1Contents,entry2Contents],[entry1FilePath,entry2FilePath]);
 
 ```
 

@@ -1,8 +1,8 @@
 {
 	"name": "dustjs-recursivenodecompiler",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"author": "A Kazim",
-	"description": "Compile DustJS templates recursively with NodeJS",
+	"description": "Recursively compile DustJS templates with Node",
 	"dependencies": {
 		"dustjs-linkedin": "~2.3.3"
 	},
