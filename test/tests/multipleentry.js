@@ -2,11 +2,11 @@ var fs = require("fs");
 var path = require("path");
 var vm = require("vm");
 
-var dust = require("../lib/server.js");
+var dust = require("../../lib/server.js");
 
 require("tap").test("multipleentry",function(t){
-	var entry1 = path.join(__dirname,"src","multipleentry","main1.dust");
-	var entry2 = path.join(__dirname,"src","multipleentry","main2.dust");
+	var entry1 = path.join(__dirname,"..","src","multipleentry","main1.dust");
+	var entry2 = path.join(__dirname,"..","src","multipleentry","main2.dust");
 	
 	var content1 = fs.readFileSync(entry1).toString();
 	var content2 = fs.readFileSync(entry2).toString();

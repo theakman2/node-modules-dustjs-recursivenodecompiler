@@ -2,9 +2,9 @@ var fs = require("fs");
 var path = require("path");
 var vm = require("vm");
 
-var dust = require("../lib/server.js");
+var dust = require("../../lib/server.js");
 
-var filePath = path.join(__dirname,"src","accesspartials","nested","main.dust");
+var filePath = path.join(__dirname,"..","src","accesspartials","nested","main.dust");
 
 require("tap").test("accesspartials",function(t){
 	fs.readFile(filePath,function(err,content){

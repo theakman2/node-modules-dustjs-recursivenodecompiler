@@ -1,8 +1,8 @@
 var vm = require("vm");
 
-var dust = require("../lib/server.js");
+var dust = require("../../lib/server.js");
 
-var compiler = require("../node_modules/dustjs-linkedin/lib/compiler.js");
+var compiler = require("../../node_modules/dustjs-linkedin/lib/compiler.js");
 
 var nonexistentPath = "/f8sh0asjv9foo/bs9gja39fjsr/b1jf0sjaz.dust";
 
