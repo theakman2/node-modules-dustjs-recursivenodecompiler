@@ -29,20 +29,6 @@ var contents = fs.readFileSync("/path/to/tmpl1.dust").toString();
 // a string containing the compiled tmpl1.dust, tmpl2.dust and tmpl3.dust files, all registered to the `dust` object.
 var compiled = dust.compile(contents,"/path/to/tmpl1.dust");
 
-// get a compiled map instead:
-var compiledMap = dust.compileMap(contents,"/path/to/tmpl1.dust");
-/**
- * `compiledMap` is an object that looks like this:
- * {
- * 	"/path/to/tmpl1.dust": {"registeredAs":"tmpl1.dust","content":"[[compiled javascript]]"}
- * 	"/path/foo/tmpl2.dust": {"registeredAs":"../foo/tmpl2.dust","content":"[[compiled javascript]]"}
- * 	"/path/foo/tmpl3.dust": {"registeredAs":"../foo/tmpl3.dust","content":"[[compiled javascript]]"}
- * }
- */
-
-// convert a compiled map to a string:
-var compiled = dust.compiledMapToString(compiledMap);
-
 /**
  * It's also possible to compile recursively with multiple entry templates by
  * making use of the optional third parameter to the `dust.compileMap` method:
