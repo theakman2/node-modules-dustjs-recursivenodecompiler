@@ -4,8 +4,6 @@ var vm = require("vm");
 
 var dust = require("../../lib/server.js");
 
-var FilePathRebase = require("../../lib/filePathMappers/FilePathRebase.js");
-
 function test(filePath,t,shouldEqual) {
 	fs.readFile(filePath,function(err,content){
 		if (err) {
@@ -16,7 +14,7 @@ function test(filePath,t,shouldEqual) {
 		
 		content = content.toString();
 		
-		dust.filePathMapper = "FilePathMangler";
+		dust.filePathMapper = new (dust.filePathMappers.FilePathMangler)();
 		
 		var compiled = dust.compile(content,filePath);
 		var context = vm.createContext({dust:dust});
@@ -30,7 +28,7 @@ function test(filePath,t,shouldEqual) {
 			}
 			t.strictEqual(out,shouldEqual,"Rendered dust should be as expected (FilePathMangler)");
 			
-			dust.filePathMapper = new FilePathRebase();
+			dust.filePathMapper = new (dust.filePathMappers.FilePathRebase)();
 			
 			compiled = dust.compile(content,filePath);
 			

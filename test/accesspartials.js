@@ -21,13 +21,13 @@ require("tap").test("accesspartials",function(t){
 		vm.runInContext(compiled,context);
 		
 		t.equivalent(
-			Object.keys(dust.cache),
+			Object.keys(dust.cache).sort(),
 			[
+			 "../partial.dust",
+			 "../sibling/partial4.dust",
 			 "main.dust",
 			 "partial3.dust",
-			 "sub/partial2.dust",
-			 "../partial.dust",
-			 "../sibling/partial4.dust"
+			 "sub/partial2.dust"
 			 ],
 			 "dust.cache should be as expected"
 		);
