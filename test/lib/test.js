@@ -17,6 +17,24 @@ function test(filePath,t,shouldEqual) {
 		
 		var compileMap = {};
 		dust.compileMap(content,filePath,compileMap);
+		
+		for (var fp in compileMap) {
+			if (compileMap.hasOwnProperty(fp)) {
+				t.strictEqual(compileMap[fp].filePath,fp);
+				t.strictEqual(Array.isArray(compileMap[fp].requires),true);
+				t.strictEqual(typeof compileMap[fp].registeredAs,"string");
+				t.strictEqual(typeof compileMap[fp].content,"string");
+				for (var i = 0, len = compileMap[fp].requires.length; i < len; ++i) {
+					t.strictEqual(
+						compileMap[fp].requires[i],
+						compileMap[compileMap[fp].requires[i].filePath]
+					);
+				}
+			}
+		}
+		
+		t.strictEqual(compileMap[filePath].filePath,filePath);
+		
 		var compiled = dust.compiledMapToString(compileMap);
 		var context = vm.createContext({dust:dust});
 		vm.runInContext(compiled,context);

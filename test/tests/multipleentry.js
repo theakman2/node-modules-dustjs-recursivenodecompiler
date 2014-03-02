@@ -44,7 +44,15 @@ require("tap").test("multipleentry",function(t){
 				return;
 			}
 			t.strictEqual(out,"x foo z","main1.dust should render as expected");
-			t.end();
+			dust.render("sharedpartial.dust",{},function(err,out){
+				if (err) {
+					t.fail("Error rendering sharedpartial.dust (error: " + err + ")");
+					t.end();
+					return;
+				}
+				t.strictEqual(out,"foo");
+				t.end();
+			});
 		});
 	});
 });

@@ -1,0 +1,4 @@
+{>"tmpl.dust"/}
+
+{<foo}x{>"partial.dust"/}o{/foo}
+{<bar}rnt{>"./partial.dust"/}{/bar}
